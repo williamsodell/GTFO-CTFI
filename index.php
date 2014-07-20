@@ -9,6 +9,7 @@
 		<style>
 			#perfecthair { opacity: 0; filter: alpha(0); }
 			#iscoming { display: none; margin-bottom: 1em; }
+			body { text-align: center; }
 		</style>
 	</head>
 	<body>
