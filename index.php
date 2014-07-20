@@ -27,7 +27,7 @@
 
 		<div class="row">
 			<div class="large-12 columns">
-				<img id="perfecthair" src="img/hair.jpg">
+				<img id="perfecthair" src="img/Dface.jpg">
 			</div>
 		</div>
 
