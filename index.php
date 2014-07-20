@@ -39,7 +39,7 @@
 			$(function () {
 				var start, end, data;
 
-				start = new Date('2014-07-11T09:00:00');
+				start = new Date('2014-07-20T09:00:00');
 				end = new Date('2014-07-28T09:00:00');
 
 				<?php if (1 == $_GET['demo']) { ?>
