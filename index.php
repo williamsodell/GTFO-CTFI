@@ -10,6 +10,8 @@
 			#perfecthair { opacity: 0; filter: alpha(0); }
 			#iscoming { display: none; margin-bottom: 1em; }
 			body { text-align: center; }
+			#quote-container { margin-top: 10px; }
+			#quotes > div { width: 100%; }
 		</style>
 	</head>
 	<body>
@@ -32,8 +34,15 @@
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="large-12 columns" id="quote-container">
+				<div id="quotes" class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="4000" data-cycle-slides="> div"></div>
+			</div>
+		</div>
+
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/foundation.min.js"></script>
+		<script src="js/vendor/jquery.cycle2.min.js"></script>
 		<script>
 			$(document).foundation();
 
@@ -44,10 +53,25 @@
 				end = new Date('2014-07-28T09:00:00');
 
 				<?php if (1 == @$_GET['demo']) { ?>
-					start = new Date();
-					end = new Date(start.getTime() + 10000);
+				start = new Date();
+				end = new Date(start.getTime() + 10000);
 				<?php } ?>
 
+				var loadQuotes = function () {
+
+					$.ajax({
+						dataType: "json",
+						url: 'quotes.json',
+						success: function(data) {
+							var item;
+							$.each(data, function(key, quote) {
+								item = '<div id="quote-' + key + '">"' + quote.content + '" <br>&nbsp;&nbsp;-- <span class="author">' + quote.author + '</span></div>';
+								$('#quotes').cycle('add', item);
+							});
+						},
+							error: function (jqXHR, textStatus, errorThrown) { console.log( {textStatus: textStatus, error: errorThrown}); }
+					});
+				};
 
 				var getData = function (now) {
 					var total, remaining;
@@ -115,12 +139,15 @@
 
 				//
 
+				loadQuotes();
+
 				if (start >= end) {
 					finish();
 				}
 				else {
 					go();
 				}
+
 			});
 		</script>
 	</body>
