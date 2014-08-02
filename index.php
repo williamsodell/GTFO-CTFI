@@ -18,7 +18,7 @@
 
 		<div class="row">
 			<div class="large-12 columns">
-				<h1>Perfect Hair is Coming</h1>
+				<h1>Get the F*** Out</h1>
 			</div>
 		</div>
 
@@ -29,8 +29,8 @@
 		</div>
 
 		<div class="row">
-			<div class="large-12 columns">
-				<img id="perfecthair" src="img/Dface.jpg">
+			<div class="large-12 columns"><?php //brandonmont ?>
+				<img id="perfecthair" src="http://graph.facebook.com/<?= htmlspecialchars($_GET['facebook_profile']) ?>/picture?type=large">
 			</div>
 		</div>
 
@@ -112,6 +112,7 @@
 						$('#remaining').text(timeRemaining);
 						$('#iscoming').show();
 					} else {
+						$('#perfecthair').css('opacity', percent / 100).css('filter', 'alpha(opacity=' + percent  + ')');
 						finish();
 					}
 				};
@@ -123,6 +124,7 @@
 						if (data.remaining <= 0) {
 							// Stop the countdown
 							clearInterval(interval);
+							updateElements(data.percent, getTimeString(data.remaining));
 							finish();
 						}
 						updateElements(data.percent, getTimeString(data.remaining));
