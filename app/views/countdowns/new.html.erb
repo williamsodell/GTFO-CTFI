@@ -1,0 +1,6 @@
+<h1>Reset your counter?</h1>
+
+<%= form_for @countdown do |f| %>
+  <%= f.hidden_field :date %>
+  <%= f.submit t('individual.submit', user: @countdown.twitter_id) %>
+<% end %>
