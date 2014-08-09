@@ -15,8 +15,10 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'zurb-foundation'
-gem 'foundation_rails_helper'
+gem 'foundation-rails'
+gem 'foundation_rails_helper', :path => "custom/foundation_rails_helper"
+
+gem 'twitter'
 
 group :development, :test do
   gem 'sqlite3'

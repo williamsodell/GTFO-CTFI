@@ -9,10 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require foundation_and_overrides
+
  *= require_tree .
  */
 
-#perfecthair { opacity: 0; filter: alpha(0); }
+#fader { opacity: 0; filter: alpha(0); }
 #iscoming { display: none; margin-bottom: 1em; }
 body { text-align: center; }
 #quote-container { margin-top: 10px; }

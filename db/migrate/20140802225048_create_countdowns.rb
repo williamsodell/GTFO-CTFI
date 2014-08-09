@@ -3,6 +3,8 @@ class CreateCountdowns < ActiveRecord::Migration
     create_table :countdowns do |t|
       t.string :twitter_id
       t.string :name
+      t.string :image
+      t.string :hashtag
       t.datetime :start_date
       t.datetime :end_date
       t.string :title

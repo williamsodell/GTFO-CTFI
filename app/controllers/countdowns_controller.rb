@@ -6,12 +6,12 @@ class CountdownsController < ApplicationController
   end
 
   def show
-    @countdown = Countdown.where(twitter_id: params[:id]).recent.first
+    @countdown = Countdown.where(name: params[:id]).first
     respond_to do |format|
       if @countdown
         format.html
         format.json do
-          render json: {username: @countdown.twitter_id, date: @countdown.date}
+          render json: @countdown
         end
       else
         format.html { render 'claim' }
@@ -23,15 +23,14 @@ class CountdownsController < ApplicationController
   end
 
   def new
-    @countdown = Countdown.new(date: Date.current)
-    @countdown.twitter_id = session[:username]
+    @countdown = Countdown.new(twitter_id: session[:username])
   end
   
   def create
-    countdown = params.require(:countdown).permit(:date)
+    countdown_params = params.require(:countdown).permit(:name, :image, :title, :hashtag, :start_date, :end_date, :start_description, :end_description)
     @countdown = Countdown.new(countdown_params)
     @countdown.twitter_id = session[:username]
     @countdown.save!
-    redirect_to countdown_path(@countdown.twitter_id)
+    redirect_to countdown_path(@countdown.name)
   end
 end

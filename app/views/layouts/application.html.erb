@@ -1,14 +1,20 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= t('title')%></title>
-    <script src="js/vendor/modernizr.js"></script>
-    <%= stylesheet_link_tag 'application' %>
+
+    <title><%= content_for?(:title) ? yield(:title) : t('title') %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
   </head>
+
   <body>
     <a href="https://github.com/williamsodell/GTFO-CTFI/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
     <%= yield %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>

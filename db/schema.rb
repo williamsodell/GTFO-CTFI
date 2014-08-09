@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20140802225048) do
   create_table "countdowns", force: true do |t|
     t.string   "twitter_id"
     t.string   "name"
+    t.string   "image"
+    t.string   "hashtag"
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "title"
