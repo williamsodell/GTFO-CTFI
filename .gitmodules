@@ -1,3 +1,0 @@
-[submodule "custom/foundation_rails_helper"]
-	path = custom/foundation_rails_helper
-	url = https://github.com/williamsodell/foundation_rails_helper.git

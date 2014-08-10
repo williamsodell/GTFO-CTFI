@@ -16,7 +16,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'foundation-rails'
-gem 'foundation_rails_helper', :path => "custom/foundation_rails_helper"
+gem 'foundation_rails_helper', :github => "williamsodell/foundation_rails_helper"
 
 gem 'twitter'
 
