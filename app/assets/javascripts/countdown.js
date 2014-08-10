@@ -1,6 +1,8 @@
 $(document).foundation();
 
 $(function () {
+	if (typeof start == 'undefined' || typeof end == 'undefined') return;
+	
 	var data;
 
 	var loadQuotes = function () {
