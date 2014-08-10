@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802225048) do
+ActiveRecord::Schema.define(version: 20140809205030) do
 
   create_table "countdowns", force: true do |t|
     t.string   "twitter_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140802225048) do
     t.text     "end_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "site"
   end
 
   add_index "countdowns", ["name"], name: "index_countdowns_on_name"

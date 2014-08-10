@@ -6,17 +6,15 @@ class CountdownsController < ApplicationController
   end
 
   def show
-    @countdown = Countdown.where(name: params[:id]).first
-    respond_to do |format|
-      if @countdown
+    @countdown = Countdown.where(name: params[:id], site: @site).first
+
+    if @countdown.nil?
+      redirect_to root_url
+    else
+      respond_to do |format|
         format.html
         format.json do
           render json: @countdown
-        end
-      else
-        format.html { render 'claim' }
-        format.json do
-          render json: {username: params[:id], date: nil}, :status => 404
         end
       end
     end
@@ -30,6 +28,7 @@ class CountdownsController < ApplicationController
     countdown_params = params.require(:countdown).permit(:name, :image, :title, :hashtag, :start_date, :end_date, :start_description, :end_description)
     @countdown = Countdown.new(countdown_params)
     @countdown.twitter_id = session[:username]
+    @countdown.site = @site
     @countdown.save!
     redirect_to countdown_path(@countdown.name)
   end

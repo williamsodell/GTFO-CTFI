@@ -50,7 +50,7 @@ $(function () {
 
 	var updateElements = function (percent, timeRemaining) {
 		if (percent < 100) {
-			if ($("#fader").hasClass('fadeout')) percent = 100 - percent;
+			if ($("#fader").hasClass('GTFO')) percent = 100 - percent;
 			$('#fader').css('opacity', percent / 100).css('filter', 'alpha(opacity=' + percent  + ')');
 			$('#description').text(start_description);
 			$('#remaining').text(timeRemaining);

@@ -1,15 +1,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :signed_in?
-
   before_action :set_locale
+  before_action :set_site
+
+  def set_site
+    case request.domain
+    when "ctfi.cc", "ctfi.dev"
+      @site = "CTFI"
+    else 
+      @site = "GTFO"
+    end
+  end
  
   def set_locale
-  	case request.host
+  	case request.domain
   	when "ctfi.cc", "ctfi.dev"
-  		I18n.locale = "en-CTFI";
+  		I18n.locale = "en-CTFI"
   	else 
-  		I18n.locale = I18n.default_locale;
+  		I18n.locale = I18n.default_locale
   	end
   end
 
