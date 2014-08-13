@@ -1,5 +1,39 @@
 $(document).foundation();
 
+function getTimeString(milli) {
+	var d, h, m, s;
+
+	s = Math.floor(milli / 1000);
+
+	m = Math.floor(s / 60);
+	s -= m * 60;
+
+	h = Math.floor(m / 60);
+	m -= h * 60;
+
+	d = Math.floor(h / 24);
+	h -= d * 24;
+
+	return d + ' days, ' + h + ' hours, ' + m + ' minutes, ' + s + ' seconds';
+}
+
+$(function() {
+	if ($("#countdowns").length > 0) {
+		var interval = setInterval(function() {
+			var now = new Date();
+			$('#countdowns tbody tr td:nth(1)').each(function() {
+				var date = new Date(parseInt($(this).attr('data:end_date')));
+
+				if (date > now) {
+					$(this).text(getTimeString(date.getTime() - now.getTime()));
+				} else {
+					$(this).text("DONE");
+				}
+			});
+		}, 1000);
+	}
+});
+
 $(function () {
 	if (typeof start == 'undefined' || typeof end == 'undefined') return;
 	
@@ -29,23 +63,6 @@ $(function () {
 			percent: Math.floor((1 - (remaining / total)) * 100),
 			remaining: remaining
 		};
-	};
-
-	var getTimeString = function (milli) {
-		var d, h, m, s;
-
-		s = Math.floor(milli / 1000);
-
-		m = Math.floor(s / 60);
-		s -= m * 60;
-
-		h = Math.floor(m / 60);
-		m -= h * 60;
-
-		d = Math.floor(h / 24);
-		h -= d * 24;
-
-		return d + ' days, ' + h + ' hours, ' + m + ' minutes, ' + s + ' seconds';
 	};
 
 	var updateElements = function (percent, timeRemaining) {

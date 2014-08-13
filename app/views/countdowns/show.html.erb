@@ -28,6 +28,21 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="large-12 columns">
+		&nbsp;
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-12 columns">
+		<%= form_for(:countdown, :url => new_countdown_path) do |f| %>
+			<%= f.submit "Make your own!" %>
+		<% end %>
+		or <%= link_to "Go Back", root_path %>
+	</div>
+</div>
+
 <script>
 	var start, end, start_description, end_description, hashtags;
 

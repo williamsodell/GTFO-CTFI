@@ -2,14 +2,14 @@ class CountdownsController < ApplicationController
   before_filter :user_required, only: [:new, :create]
 
   def index
-    
+    @countdowns = Countdown.where('start_date < ?', DateTime.now).where('end_date > ?', DateTime.now).where(site: @site).order('end_date DESC').take(10)
   end
 
   def show
     @countdown = Countdown.where(name: params[:id], site: @site).first
 
     if @countdown.nil?
-      redirect_to root_url
+      redirect_to root_url, alert: "Countdown #{params[:id]} does not exist."
     else
       respond_to do |format|
         format.html

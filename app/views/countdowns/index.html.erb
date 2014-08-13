@@ -17,4 +17,27 @@
 		<% end %>
 	</div>
 </div>
-
+<div class="row">
+	<% if @countdowns.count > 0 %>
+		<table id="countdowns" class="large-12 columns">
+			<thead>
+				<tr>
+					<th width="200">Name</th>
+					<th>Time Left</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @countdowns.each do |countdown| %>
+					<tr>
+						<td><%= link_to countdown.title, countdown_path(countdown.name) %></td>
+						<td data:end_date="<%= countdown.end_date.to_i * 1000 %>"></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+		<div class="large-12 columns">
+			<p>No Countdowns in progress</p>
+		</div>
+	<% end %>
+</div>
