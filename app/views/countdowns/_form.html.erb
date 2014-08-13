@@ -1,0 +1,11 @@
+<%= form_for @countdown do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :title %>
+    <%= f.text_field :image, :label => 'Facebook Username' %>
+    <%= f.text_field :hashtag %>
+    <%= f.datetime_field :start_date %>
+    <%= f.datetime_field :end_date %>
+    <%= f.text_area :start_description %>
+    <%= f.text_area :end_description %>
+    <%= f.submit "Save" %>
+<% end %>

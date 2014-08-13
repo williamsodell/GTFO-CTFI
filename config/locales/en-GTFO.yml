@@ -5,3 +5,13 @@ en-GTFO:
   title: "Get the F*** Out"
   everyone:
     header: "Count down until something goes away.."
+  form:
+    new: "New Countdown?"
+    edit: "Edit Countdown?"
+  activerecord:
+    errors:
+      models:
+        countdown:
+          attributes:
+            name:
+              taken: "Name Already Taken"

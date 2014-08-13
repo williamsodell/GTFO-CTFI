@@ -1,4 +1,11 @@
 class Countdown < ActiveRecord::Base
+	validates_uniqueness_of :name, :case_sensitive => false
+	before_save :before_save
+
+	def before_save
+		name.downcase!
+	end
+	
 	def tweets
 		client = Twitter::REST::Client.new do |config|
 			config.consumer_key        = ENV["TWITTER_CONSUMER_KEY"]

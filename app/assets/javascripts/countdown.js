@@ -21,13 +21,13 @@ $(function() {
 	if ($("#countdowns").length > 0) {
 		var interval = setInterval(function() {
 			var now = new Date();
-			$('#countdowns tbody tr td:nth(1)').each(function() {
-				var date = new Date(parseInt($(this).attr('data:end_date')));
+			$('#countdowns tbody tr').each(function() {
+				var date = new Date(parseInt($(this).find('> td:nth(1)').attr('data:end_date')));
 
 				if (date > now) {
-					$(this).text(getTimeString(date.getTime() - now.getTime()));
+					$(this).find('> td:nth(1)').text(getTimeString(date.getTime() - now.getTime()));
 				} else {
-					$(this).text("DONE");
+					$(this).find('> td:nth(1)').text("DONE");
 				}
 			});
 		}, 1000);

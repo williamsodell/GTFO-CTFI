@@ -10,6 +10,14 @@
 	</div>
 </div>
 
+<% if @countdown.twitter_id == session[:username] %>
+	<div class="row">
+		<div class="large-12 columns">
+			<p><%= link_to "edit", edit_countdown_path(@countdown.name) %></p>
+		</div>
+	</div>
+<% end %>
+
 <div class="row">
 	<div class="large-12 columns" id="iscoming">
 		in <span id="remaining">...</span>

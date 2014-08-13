@@ -5,3 +5,13 @@ en-CTFI:
   title: "Come the F*** In"
   everyone:
     header: "Count down until something happens.."
+  form:
+    new: "New Countdown?"
+    edit: "Edit Countdown?"
+  activerecord:
+    errors:
+      models:
+        countdown:
+          attributes:
+            name:
+              taken: "Name Already Taken"
