@@ -21,6 +21,8 @@ gem 'foundation_rails_helper', :github => "williamsodell/foundation_rails_helper
 gem 'twitter'
 
 gem 'rack-canonical-host'
+gem "fog", "~>1.20", :require => "fog/aws/storage"
+gem "asset_sync"
 
 group :development, :test do
   gem 'sqlite3'

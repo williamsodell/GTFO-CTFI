@@ -12,6 +12,8 @@ rerun.txt
 pickle-email-*.html
 config/initializers/secret_token.rb
 
+public/assets
+
 ## Environment normalisation:
 /.bundle
 /vendor/bundle
