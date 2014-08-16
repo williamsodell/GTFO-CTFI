@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809205030) do
+ActiveRecord::Schema.define(version: 20140816031529) do
 
   create_table "countdowns", force: true do |t|
     t.string   "twitter_id"
     t.string   "name"
-    t.string   "image"
     t.string   "hashtag"
     t.datetime "start_date"
     t.datetime "end_date"
@@ -26,6 +25,10 @@ ActiveRecord::Schema.define(version: 20140809205030) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "site"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "countdowns", ["name"], name: "index_countdowns_on_name"

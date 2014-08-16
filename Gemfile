@@ -23,6 +23,8 @@ gem 'twitter'
 gem 'rack-canonical-host'
 gem "fog", "~>1.20", :require => "fog/aws/storage"
 gem "asset_sync"
+gem 'aws-sdk', '~> 1.5.7'
+gem "paperclip", "~> 4.1"
 
 group :development, :test do
   gem 'sqlite3'

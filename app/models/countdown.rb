@@ -2,6 +2,12 @@ class Countdown < ActiveRecord::Base
 	validates_uniqueness_of :name, :case_sensitive => false
 	before_save :before_save
 
+	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+	validates :image, :attachment_presence => true
+	validates_with AttachmentPresenceValidator, :attributes => :image
+	validates_with AttachmentSizeValidator, :attributes => :image, :less_than => 10.megabytes
+
 	def before_save
 		name.downcase!
 	end
