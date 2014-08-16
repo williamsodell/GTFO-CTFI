@@ -66,8 +66,9 @@ $(function () {
 	};
 
 	var updateElements = function (percent, timeRemaining) {
-		if (percent < 100) {
-			if ($("#fader").hasClass('GTFO')) percent = 100 - percent;
+		if ($("#fader").hasClass('GTFO')) percent = 100 - percent;
+
+		if (percent < 100 && percent > 0) {
 			$('#fader').css('opacity', percent / 100).css('filter', 'alpha(opacity=' + percent  + ')');
 			$('#description').text(start_description);
 			$('#remaining').text(timeRemaining);
@@ -92,8 +93,7 @@ $(function () {
 			updateElements(data.percent, getTimeString(data.remaining));
 		}, 1000);
 
-		$('#iscoming').fadeIn()
-
+		$('#iscoming').fadeIn();
 	};
 
 	var finish = function () {
@@ -105,8 +105,6 @@ $(function () {
 	if (start >= end) {
 		finish();
 	}
-	else {
-		go();
-	}
 
+	go();
 });

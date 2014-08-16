@@ -28,8 +28,28 @@
         &nbsp;
       </div>
     </div>
-
+    
     <%= yield %>
+    
+    <footer class="row">
+      <div class="large-4 columns">
+        <p>
+          © <%= Time.now.year %> BnC Group. All rights reserved.
+        </p>
+      </div>
+      <div class="large-4 columns">
+        <p>
+          <%= link_to "Disclaimer", disclaimer_path %>
+        </p>
+      </div>
+
+      <div class="large-4 columns">
+        <p class="right">
+          <%= @site %>.cc is a product of <a href="http://www.bncstudios.co" class="brand"><strong>BnC Group</strong></a>.
+        </p>
+      </div>
+    </footer>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <%= javascript_include_tag "application" %>
   </body>

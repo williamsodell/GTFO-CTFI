@@ -5,6 +5,10 @@
       Paperclip::Attachment.default_options[:path] = 'images/:class/:id.:style.:extension'
       Paperclip::Attachment.default_options[:s3_host_alias] = 'cdn3.gtfo.cc'
 
+      Paperclip.interpolates(:placeholder) do |attachment, style|
+        ActionController::Base.helpers.asset_path("missing_#{style}.png")
+      end
+
     # # config/initializers/paperclip.rb
     # Paperclip::Attachment.default_options[:s3_host_name] = 's3-us-west-2.amazonaws.com'
     end
